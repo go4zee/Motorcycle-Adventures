@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using SQLite;
 
-namespace MotorcycleAdventures.Models
+namespace MotorcycleAdventures.Core.Models
 {
     public class DailyAnswer
     {

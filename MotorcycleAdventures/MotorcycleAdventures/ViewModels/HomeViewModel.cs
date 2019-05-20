@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using MotorcycleAdventures.Models;
+using MotorcycleAdventures.Core.Models;
 using MotorcycleAdventures.Persistence;
 using MotorcycleAdventures.Services;
 using SQLite;
