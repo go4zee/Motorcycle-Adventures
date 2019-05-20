@@ -14,7 +14,7 @@
             </Style>
         </ResourceDictionary>
         <ControlTemplate x:Key="HeaderTemplate">
-            <Grid Margin="0" VerticalOptions="StartAndExpand">
+            <Grid Margin="0" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*"/>
@@ -35,7 +35,7 @@
                            AbsoluteLayout.LayoutFlags="PositionProportional">
                     </Image>
                 </AbsoluteLayout>
-                <ContentPresenter Grid.Row="1"/>
+                <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1"/>
             </Grid>
         </ControlTemplate>
     </Application.Resources>

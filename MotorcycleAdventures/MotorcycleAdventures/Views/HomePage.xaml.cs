@@ -12,7 +12,7 @@ namespace MotorcycleAdventures.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public HomeViewModel HomeViewModel
+        public HomeViewModel ViewModel
         {
             get => BindingContext as HomeViewModel;
             set => BindingContext = value;
@@ -20,9 +20,14 @@ namespace MotorcycleAdventures.Views
 
         public HomePage()
         {
-            BindingContext = new HomeViewModel(new PageService(Navigation));
+            ViewModel = new HomeViewModel(new PageService(Navigation));
 
             InitializeComponent();
+        }
+
+        private void SaveAnswer_OnClicked(object sender, EventArgs e)
+        {
+            ViewModel.SaveCommand.Execute(TxtAnswer.Text);
         }
     }
 }

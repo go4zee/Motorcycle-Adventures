@@ -14,24 +14,16 @@
     <TabbedPage.Children>
         <NavigationPage Title="Home" 
                         HasNavigationBar="False"
-                        BarBackgroundColor="{Binding Source={x:Static local:Constants.Orange}}">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
+                        BarBackgroundColor="{Binding Source={x:Static local:Constants.Orange}}"
+                        Icon="Home.png">
             <x:Arguments>
                 <views:HomePage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Goals"
-            HasNavigationBar="False"
-                        BarBackgroundColor="{Binding Source={x:Static local:Constants.Orange}}">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
+                        HasNavigationBar="False"
+                        BarBackgroundColor="{Binding Source={x:Static local:Constants.Orange}}" 
+                        Icon="Goals.png">
             <x:Arguments>
                 <views:GoalsPage />
             </x:Arguments>

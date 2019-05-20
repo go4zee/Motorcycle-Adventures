@@ -1,11 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MotorcycleAdventures.Core;assembly=MotorcycleAdventures"
              x:Class="MotorcycleAdventures.Views.HomePage"    NavigationPage.HasNavigationBar="False">
     <ContentView x:Name="contentView" Padding="0"
                  ControlTemplate="{StaticResource HeaderTemplate}">
-        <StackLayout>
-         <Label Text="Home Page"/>
-        </StackLayout>
+        <ScrollView>
+            <ScrollView.Content>
+                <Grid BackgroundColor="White" Padding="30, 15" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="What adventure did you go on today?" TextColor="#9f1c1c" FontFamily="{Binding FontName}"
+                   HorizontalOptions="CenterAndExpand" Grid.Row="0" FontSize="20" Margin="0, 20, 0, 5"/>
+
+                    <Label Text="{Binding Date}" TextColor="#ef3f3f" FontFamily="{Binding FontName}"
+                   HorizontalOptions="CenterAndExpand" Grid.Row="1" FontSize="10"/>
+
+                    <Frame BorderColor="Transparent" Grid.Row="2" Padding="0" Margin="0" CornerRadius="5" HasShadow="False" VerticalOptions="FillAndExpand" MinimumHeightRequest="200">
+                        <Frame.Triggers>
+                            <DataTrigger  TargetType="Frame" Binding="{Binding Device}"  Value="Android">
+                                <Setter Property="Frame.BorderColor" Value="Transparent"/>
+                            </DataTrigger>
+                        </Frame.Triggers>
+                        <Editor Grid.Row="4" Placeholder="Enter your answer here..." PlaceholderColor="Gray" FontSize="14" TextColor="Gray" Text="" x:Name="TxtAnswer"
+                                VerticalOptions="FillAndExpand"
+                                MinimumHeightRequest="200"/>
+                    </Frame>
+
+                    <Button Grid.Row="3" Text="SAVE" Margin="0 , 20, 0, 10" 
+                            BackgroundColor="{Binding Source={x:Static local:Constants.Orange}}" 
+                            Padding="20, 10" CornerRadius="2"
+                            x:Name="BtnSave"
+                            HorizontalOptions="CenterAndExpand"
+                            Clicked="SaveAnswer_OnClicked"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+
+                </Grid>
+            </ScrollView.Content>
+        </ScrollView>
     </ContentView>
 </ContentPage>
