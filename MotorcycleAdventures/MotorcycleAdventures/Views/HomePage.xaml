@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MotorcycleAdventures.Views.HomePage"    NavigationPage.HasNavigationBar="False">
+    <ContentView x:Name="contentView" Padding="0"
+                 ControlTemplate="{StaticResource HeaderTemplate}">
+        <StackLayout>
+         <Label Text="Home Page"/>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

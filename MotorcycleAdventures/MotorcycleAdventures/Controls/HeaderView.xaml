@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:core="clr-namespace:MotorcycleAdventures.Core;assembly=MotorcycleAdventures"
+             x:Class="MotorcycleAdventures.Controls.HeaderView">
+  <ContentView.Content>
+      <Grid Margin="0 , 0, 0, 10" VerticalOptions="StartAndExpand">
+          <Grid.RowDefinitions>
+              <RowDefinition Height="100"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="8*"/>
+          </Grid.ColumnDefinitions>
+          <Image Source="Logo.png" Grid.Column="0" Grid.Row="0" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+              <Image.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding SupportCommand}"/>
+              </Image.GestureRecognizers>
+          </Image>
+      </Grid>
+    </ContentView.Content>
+</ContentView>
