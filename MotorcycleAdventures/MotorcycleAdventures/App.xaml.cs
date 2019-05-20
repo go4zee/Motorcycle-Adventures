@@ -13,7 +13,6 @@ namespace MotorcycleAdventures
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
