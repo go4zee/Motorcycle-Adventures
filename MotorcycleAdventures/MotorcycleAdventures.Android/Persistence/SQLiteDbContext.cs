@@ -13,7 +13,7 @@ namespace MotorcycleAdventures.Droid.Persistence
     {
         public SQLiteAsyncConnection GetConnection()
         {
-            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentsPath, Constants.DbName);
 
             return new SQLiteAsyncConnection(path);

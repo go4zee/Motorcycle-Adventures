@@ -16,7 +16,7 @@ namespace MotorcycleAdventures.Models
 
         public DailyAnswer()
         {
-            AnsweredOn = DateTime.Now;
+            AnsweredOn = DateTime.Today;
         }
     }
 }

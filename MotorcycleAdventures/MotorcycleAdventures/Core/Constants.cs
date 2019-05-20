@@ -15,7 +15,7 @@ namespace MotorcycleAdventures.Core
 
         public static Color BottonIconDefault = Color.FromHex("f0f0f0");
 
-        public static string DbName = "MotorcycleAdventuresDb.db3";
+        public const string DbName = "MotorcycleAdventuresDb.db3";
 
         public static class Unit
         {
