@@ -21,7 +21,7 @@
                           BackgroundColor="White" 
                           Padding="30, 15" 
                           RowSpacing="0" 
-                          IsVisible="{Binding DailyAnswerNotificationTask.IsCompleted}">
+                          IsVisible="{Binding DailyAnswerNotificationTask.IsSuccessfullyCompleted}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="20"/>

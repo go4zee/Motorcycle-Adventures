@@ -30,26 +30,31 @@ namespace MotorcycleAdventures.ViewModels
         {
             var connection = DependencyService.Get<ISQLiteDbContext>().GetConnection();
             _repository = new Repository<DailyAnswer>(connection);
+
+            Date = DateTime.Today;
+
+            SaveCommand = new Command<string>(async s => await Save(s));
         }
 
         public HomeViewModel(IPageService pageService) : this()
         {
             _pageService = pageService;
 
-            Date = DateTime.Today;
-
-            SaveCommand = new Command<string>(async s => await Save(s));
-
             DailyAnswerNotificationTask = new NotifyTaskCompletion<DailyAnswer>(task: GetDailyAnswer());
 
             DailyAnswerNotificationTask.PropertyChanged += (sender, args) =>
             {
-                if (args.PropertyName.Equals(nameof(DailyAnswerNotificationTask.IsCompleted))
-                    && DailyAnswerNotificationTask.IsCompleted)
+                if (args.PropertyName.Equals(nameof(DailyAnswerNotificationTask.IsSuccessfullyCompleted))
+                    && DailyAnswerNotificationTask.IsSuccessfullyCompleted)
                 {
                     DailyAnswer = DailyAnswerNotificationTask.Result;
 
                     OnPropertyChanged(nameof(DailyAnswer));
+                }
+
+                if (args.PropertyName.Equals(nameof(DailyAnswerNotificationTask.IsTimedOut)))
+                {
+                    var _ = _pageService.DisplayAlert("Error", "Timed Out", null, "Ok").Result;
                 }
             };
         }

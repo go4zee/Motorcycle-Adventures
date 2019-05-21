@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace MotorcycleAdventures.Services
 {
@@ -9,6 +12,7 @@ namespace MotorcycleAdventures.Services
         public NotifyTaskCompletion(Task<TResult> task)
         {
             Task = task;
+
             if (!task.IsCompleted)
             {
                 var _ = WatchTaskAsync(task);
@@ -22,6 +26,7 @@ namespace MotorcycleAdventures.Services
             }
             catch
             {
+                // ignored
             }
 
             var propertyChanged = PropertyChanged;
@@ -67,6 +72,8 @@ namespace MotorcycleAdventures.Services
         public bool IsCanceled => Task.IsCanceled;
 
         public bool IsFaulted => Task.IsFaulted;
+
+        public bool IsTimedOut { get; set; }
 
         public AggregateException Exception => Task.Exception;
 
