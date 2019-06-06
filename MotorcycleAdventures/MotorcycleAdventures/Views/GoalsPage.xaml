@@ -1,12 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MotorcycleAdventures.Views.GoalsPage">
+             xmlns:controls="clr-namespace:MotorcycleAdventures.Controls;assembly=MotorcycleAdventures"
+             xmlns:converters="clr-namespace:MotorcycleAdventures.Converters;assembly=MotorcycleAdventures"
+             x:Class="MotorcycleAdventures.Views.GoalsPage"
+             x:Name="GoalContentPage">
+    <ContentPage.Resources>
+        <converters:GoalNameStringConverter x:Key="GoalNameStringConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid IsVisible="True"  x:Name="GridGoals">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="My Goals" Grid.Column="0" VerticalTextAlignment="Center" TextColor="#9f1c1c" FontSize="24" 
+                           FontAttributes="Bold" HorizontalTextAlignment="Center" FontFamily="{Binding FontName}" />
+                <ImageButton Source="Plus.png" Grid.Column="1" Aspect="AspectFit" BackgroundColor="Transparent"
+                                 WidthRequest="25" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="End" 
+                                 Clicked="AddNewGoal_OnClicked" Margin="0 ,0, 10, 0"/>
+            </Grid>
+
+            <!-- Goals -->
+            <controls:CustomListView   SeparatorColor="Black" 
+                    ItemsSource="{Binding GoalCategories}" 
+                    ItemTapped="Handle_ItemTapped" 
+                    Margin="0"
+                    SeparatorVisibility="None" 
+                    HasUnevenRows="True" 
+                    Grid.Row="1" 
+                    x:Name="MainListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Grid Padding="15">
+                                    <Label Text="{Binding GoalCategoryName}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="{Binding FontName}"/>
+                                    <Image Source="{Binding ArrowIconSource}" HeightRequest="15" WidthRequest="15" VerticalOptions="Center" HorizontalOptions="End"/>
+                                </Grid>
+                                <Grid IsVisible="{Binding AreChildrenVisible}" HeightRequest="{Binding ChildrenRowHeightRequest}">
+                                    <ListView 
+                                        ItemsSource="{Binding Goals}" 
+                                        SeparatorVisibility="None" 
+                                        HasUnevenRows="False" 
+                                        x:Name="ChildListView">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Grid Padding="25, 0, 15, 0">
+                                                        <Image Source="Blackdot.png" WidthRequest="5" HeightRequest="5" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                        <Label Text="{Binding test}"></Label>
+                                                        <Label Text="{Binding ., Converter={StaticResource GoalNameStringConverter}}" FontSize="14" VerticalOptions="Center" HorizontalOptions="Start" Margin="10, 0" />
+                                                        <Image Source="Delete.png" WidthRequest="15" HeightRequest="15" HorizontalOptions="End" >
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Source={x:Reference GoalContentPage}, Path=BindingContext.RemoveGoalCommand}" CommandParameter="{Binding .}"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                        <!--<ImageButton Source="Delete.png" Clicked="RemoveGoalButton_OnClicked" WidthRequest="15" HeightRequest="15" HorizontalOptions="End" BackgroundColor="Transparent"/>-->
+                                                    </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:CustomListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

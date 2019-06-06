@@ -10,8 +10,8 @@ namespace MotorcycleAdventures.Services
     {
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(string id);
-        Task<T> GetItemAsync(string id);
+        Task<bool> DeleteItemAsync(int id);
+        Task<T> GetItemAsync(int id);
         Task<IEnumerable<T>>  Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null);
         Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate, bool forceRefresh = false);
         Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate, bool forceRefresh = false);

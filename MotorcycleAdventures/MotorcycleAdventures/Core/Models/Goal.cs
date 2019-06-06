@@ -5,7 +5,8 @@ using SQLite;
 
 namespace MotorcycleAdventures.Core.Models
 {
-    public class Goal
+    [Serializable]
+    public class Goal : INameAndId
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -16,13 +17,19 @@ namespace MotorcycleAdventures.Core.Models
         [MaxLength(255)]
         public string Name { get; set; }
 
-        public DateTime AcheiveBySeason { get; set; }
+        public DateTime AchieveByDate { get; set; }
 
         public DateTime AddedOn { get; set; }
 
         public Goal()
         {
             AddedOn = DateTime.Now;
+            AchieveByDate = DateTime.Today;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

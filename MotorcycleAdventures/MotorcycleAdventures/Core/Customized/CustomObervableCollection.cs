@@ -20,10 +20,11 @@ namespace MotorcycleAdventures.Core.Customized
 
         public void ReportItemChange(T item)
         {
+            var indexOf = IndexOf(item);
             NotifyCollectionChangedEventArgs args = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace,
                                                     item,
                                                     item,
-                                                    IndexOf(item));
+                                                    indexOf);
             OnCollectionChanged(args);
         }
     }

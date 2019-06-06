@@ -29,12 +29,12 @@ namespace MotorcycleAdventures.Services
             return await _connection.UpdateAsync(item) > 0;
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             return await _connection.DeleteAsync<T>(id) > 0;
         }
 
-        public async Task<T> GetItemAsync(string id)
+        public async Task<T> GetItemAsync(int id)
         {
             return await _connection.GetAsync<T>(id);
         }

@@ -24,5 +24,19 @@ namespace MotorcycleAdventures.Views
 
             InitializeComponent();
         }
+
+        private void AddNewGoal_OnClicked(object sender, EventArgs e)
+        {
+            ViewModel.AddGoalCommand.Execute(e);
+        }
+
+        private void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ViewModel.ShowGoalCommand.Execute(e.Item as GoalCategoryViewModel);
+        }
+
+        private void RemoveGoal_OnTap(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customized="clr-namespace:MotorcycleAdventures.Core.Customized;assembly=MotorcycleAdventures"
+             xmlns:local="clr-namespace:MotorcycleAdventures.Core;assembly=MotorcycleAdventures"
+             x:Class="MotorcycleAdventures.Views.NewGoalPage">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" x:Name="GridAddNewGoal">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform 35, iOS=35, Android=40}"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="My Goals" TextColor="#9f1c1c" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center" FontFamily="{Binding FontName}" 
+                       Margin="0, 15, 0, 0"/>
+
+            <Label Grid.Row="1" Text="Add a Goal" TextColor="#444444" FontSize="14" HorizontalTextAlignment="Center" Margin="0, 5, 0, 0" FontFamily="{Binding FontName}"/>
+
+            <StackLayout Grid.Row="2" Padding="30, 5">
+                <Label Text="My Goal Is:" TextColor="#444444" 
+                       FontSize="14" 
+                       HorizontalOptions="Start" 
+                       FontFamily="{Binding FontName}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Start" 
+                       VerticalOptions="Start"/>
+                <customized:CustomEntry BorderColor="#444444" BorderWidth="2" x:Name="TxtGoal" FontSize="14" Text="{Binding Goal.Name}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Padding="30, 5">
+                <Label Text="Goal Category:" TextColor="#444444" FontSize="14" HorizontalOptions="Start" FontFamily="{Binding FontName}" FontAttributes="Bold"
+                           HorizontalTextAlignment="Start" VerticalOptions="Start"/>
+                <Picker x:Name="DdlCategory" Title="Select a Goal Category" ItemsSource="{Binding GoalCategories}" SelectedItem="{Binding Goal.GoalCategoryName}"
+                            ItemDisplayBinding="{Binding .}" FontSize="14" TextColor="#444444"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Padding="30, 5">
+                <Label Text="I Want to Achieve This By:" 
+                       TextColor="#444444" 
+                       FontSize="14" 
+                       HorizontalOptions="Start" 
+                       FontFamily="{Binding FontName}" 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Start" 
+                       VerticalOptions="Start"/>
+                <DatePicker x:Name="DdlAcheiveBy" Date="{Binding Goal.AchieveByDate, Mode=TwoWay}" FontSize="14" TextColor="#444444"/>
+            </StackLayout>
+
+            <Grid Grid.Row="5" VerticalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="SAVE" Margin="0 , 20, 0, 10" BackgroundColor="{Binding Source={x:Static local:Constants.Orange}}" Padding="20, 10" CornerRadius="2" Grid.Column="0"
+                                HorizontalOptions="CenterAndExpand" WidthRequest="140"
+                                FontAttributes="Bold"
+                                TextColor="White" VerticalOptions="End" Command="{Binding SaveGoalCommand}"/>
+
+                    <Button Text="CANCEL" Margin="0 , 20, 0, 10" BackgroundColor="{Binding Source={x:Static local:Constants.Orange}}" Padding="20, 10" CornerRadius="2" Grid.Column="1" x:Name="Cancel"
+                                HorizontalOptions="CenterAndExpand" WidthRequest="140"
+                                FontAttributes="Bold"
+                                TextColor="White" VerticalOptions="End" Command="{Binding CancelCommand}"/>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
