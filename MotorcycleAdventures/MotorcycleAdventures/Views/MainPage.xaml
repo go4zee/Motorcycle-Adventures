@@ -28,6 +28,14 @@
                 <views:GoalsPage />
             </x:Arguments>
         </NavigationPage>
+        <NavigationPage Title="Past Answers"
+                        HasNavigationBar="False"
+                        BarBackgroundColor="{Binding Source={x:Static local:Constants.Orange}}" 
+                        Icon="Goals.png">
+            <x:Arguments>
+                <views:PastAnswersPage />
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 
 </TabbedPage>

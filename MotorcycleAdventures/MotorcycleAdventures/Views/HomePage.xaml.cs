@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MotorcycleAdventures.Persistence;
-using MotorcycleAdventures.Services;
 using MotorcycleAdventures.ViewModels;
-using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
